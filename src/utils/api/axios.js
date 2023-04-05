@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8000";
+const baseUrl = "https://colour-test.onrender.com";
+
+// http://localhost:8000
 
 export const apiPost = (path, data) => {
-  console.log("axios", data);
   const config = {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("signature")}`,
@@ -13,6 +14,5 @@ export const apiPost = (path, data) => {
 
   const requestData = JSON.stringify(data);
 
-  console.log(`${baseUrl}${path}`, requestData, config);
   return axios.post(`${baseUrl}${path}`, requestData, config);
 };

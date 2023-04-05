@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 export const dataContext = createContext();
 
 const DataProvider = ({ children }) => {
-
   /**==============Login======= **/
   const Login = async (formdata) => {
     try {
@@ -16,8 +15,6 @@ const DataProvider = ({ children }) => {
       };
 
       await apiPost("/user/login", loginData).then((res) => {
-        console.log("loginData", loginData);
-
         toast.success(res.data.message);
         localStorage.setItem("signature", res.data.token);
       });
@@ -29,26 +26,22 @@ const DataProvider = ({ children }) => {
     }
   };
 
-/**==============Register======= **/
-const Register = async (formdata) => {
-  try {
-    const registerData = {
-      userName:formdata.userName,
-      email: formdata.email,
-      password: formdata.password,
-    };
+  /**==============Register======= **/
+  const Register = async (formdata) => {
+    try {
+      const registerData = {
+        userName: formdata.userName,
+        email: formdata.email,
+        password: formdata.password,
+      };
 
-    await apiPost("/user/signup", registerData).then((res) => {
-     console.log(res.data)
-      window.location.href = "/signup-success";
-      
-    });
-    
-  } catch (err) {
-    console.log(err.response.data)
-    toast.error(err.response.data.message);
-  }
-};
+      await apiPost("/user/signup", registerData).then((res) => {
+        window.location.href = "/signup-success";
+      });
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
+  };
 
   /**==============Reset Password======= **/
   const ResetPassword = async (formdata) => {
@@ -73,23 +66,21 @@ const Register = async (formdata) => {
 
   /**==============Create Password======= **/
   const CreatePassword = async (formdata, email) => {
-    console.log("email", email)
     try {
       const createPasswordData = {
         newPassword: formdata.newPassword,
       };
 
-      await apiPost(`/user/create-password/${email}`, createPasswordData).then((res) => {
-        localStorage.clear()
-        window.location.href = "/password-success";
-      });
+      await apiPost(`/user/create-password/${email}`, createPasswordData).then(
+        (res) => {
+          localStorage.clear();
+          window.location.href = "/password-success";
+        }
+      );
     } catch (err) {
       toast.error(err.response.data.message);
-      
     }
   };
-
-  
 
   return (
     <dataContext.Provider
@@ -97,8 +88,7 @@ const Register = async (formdata) => {
         Login,
         ResetPassword,
         CreatePassword,
-        Register
-        
+        Register,
       }}
     >
       {children}

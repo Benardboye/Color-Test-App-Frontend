@@ -9,8 +9,8 @@ import { useAuth } from "../../context/authContext";
 import { useParams } from "react-router-dom";
 
 const CreatePassword = () => {
-  const { email } = useParams()
-  console.log("controller",email)
+  const { email } = useParams();
+
   const [isShown, setIsSHown] = useState(false);
   const [confirmIsShown, setConfirmIsSHown] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(true);
@@ -28,7 +28,6 @@ const CreatePassword = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
 
   const handleSubmit = (e) => {
@@ -36,7 +35,7 @@ const CreatePassword = () => {
     if (formData.newPassword === formData.confirmPassword) {
       setPasswordsMatch(true);
       CreatePassword(formData, email);
-      console.log(formData);
+
       setFormData({});
     } else {
       setPasswordsMatch(false);
@@ -67,7 +66,10 @@ const CreatePassword = () => {
                 onChange={handleChange}
                 required
               />
-              <span  style={{position:"absolute", marginLeft:"19rem"}} onClick={togglePassword}>
+              <span
+                style={{ position: "absolute", marginLeft: "19rem" }}
+                onClick={togglePassword}
+              >
                 {isShown ? (
                   <FontAwesomeIcon icon={faEye} />
                 ) : (
@@ -87,7 +89,10 @@ const CreatePassword = () => {
                 onChange={handleChange}
                 required
               />
-              <span style={{position:"absolute", marginLeft:"19rem"}} onClick={toggleConfirmPassword}>
+              <span
+                style={{ position: "absolute", marginLeft: "19rem" }}
+                onClick={toggleConfirmPassword}
+              >
                 {confirmIsShown ? (
                   <FontAwesomeIcon icon={faEye} />
                 ) : (
@@ -95,7 +100,9 @@ const CreatePassword = () => {
                 )}
               </span>
             </div>
-            {!passwordsMatch && <div style={{ color: "red" }}>Passwords do not match</div>}
+            {!passwordsMatch && (
+              <div style={{ color: "red" }}>Passwords do not match</div>
+            )}
 
             <Button name="Create new password" color="#4EE0BC" />
           </div>

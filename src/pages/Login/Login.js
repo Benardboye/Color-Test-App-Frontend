@@ -10,7 +10,7 @@ import { useAuth } from "../../context/authContext";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [isShown, setIsSHown] = useState(false)
+  const [isShown, setIsSHown] = useState(false);
   const { Login } = useAuth();
   const [formData, setFormData] = useState({});
 
@@ -21,28 +21,27 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     Login(formData);
-    console.log("submit",formData);
+
     setFormData({});
   };
   return (
     <div className={login.login}>
       <Navbar />
-      <div className= {login.form}>
+      <div className={login.form}>
         <h1>Access your test app.</h1>
       </div>
 
       <div className={login.body}>
         <HeroImg />
-        <form style={{width:"35%"}} onSubmit={handleSubmit}>
+        <form style={{ width: "35%" }} onSubmit={handleSubmit}>
           <div className={login.field}>
             <h3>Insert your credentials</h3>
-            <div className={login.input} style={{marginBottom:"20px"}}>
+            <div className={login.input} style={{ marginBottom: "20px" }}>
               <input
                 type="email"
                 name="email"
@@ -53,7 +52,10 @@ const Login = () => {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               />
             </div>
-            <div className={login.input} style={{marginBottom:"10px", display: "flex"}}>
+            <div
+              className={login.input}
+              style={{ marginBottom: "10px", display: "flex" }}
+            >
               <input
                 type={isShown ? "text" : "password"}
                 name="password"
@@ -62,7 +64,10 @@ const Login = () => {
                 onChange={handleChange}
                 required
               />
-              <span style={{position:"absolute", marginLeft:"19rem"}} onClick={togglePassword}>
+              <span
+                style={{ position: "absolute", marginLeft: "19rem" }}
+                onClick={togglePassword}
+              >
                 {isShown ? (
                   <FontAwesomeIcon icon={faEye} />
                 ) : (
@@ -75,9 +80,8 @@ const Login = () => {
               <Link to="/reset-password">here</Link>
             </h3>
             <Button type="submit" name="Log In" color="#4EE0BC" />
-            
           </div>
-          <h3 style={{ fontSize: "14px", marginLeft:"65px" }}>
+          <h3 style={{ fontSize: "14px", marginLeft: "65px" }}>
             You don’t have a profile yet? sign up{" "}
             <Link to="/register">here</Link>
           </h3>

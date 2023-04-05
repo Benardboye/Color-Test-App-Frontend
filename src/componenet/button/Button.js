@@ -1,6 +1,6 @@
 import React from "react";
 import "./Button.css";
-import { Link } from "react-router-dom";
+
 import { images } from "../../images/index";
 
 export const Button = ({ name, color, width }) => {

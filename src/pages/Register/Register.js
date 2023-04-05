@@ -7,10 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 import { useAuth } from "../../context/authContext";
-import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [isShown, setIsSHown] = useState(false)
+  const [isShown, setIsSHown] = useState(false);
   const { Register } = useAuth();
   const [formData, setFormData] = useState({});
 
@@ -21,13 +20,12 @@ const Register = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-    console.log(formData);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     Register(formData);
-    console.log(formData);
+
     setFormData({});
   };
   return (
@@ -41,8 +39,8 @@ const Register = () => {
         <HeroImg />
         <form onSubmit={handleSubmit}>
           <div className={register.field}>
-            <h3>Chose a user-id and  a password</h3>
-            <div className={register.input} style={{marginBottom:"20px"}}>
+            <h3>Chose a user-id and a password</h3>
+            <div className={register.input} style={{ marginBottom: "20px" }}>
               <input
                 type="name"
                 name="userName"
@@ -50,10 +48,9 @@ const Register = () => {
                 placeholder="Chose a user ID"
                 onChange={handleChange}
                 required
-                
               />
             </div>
-            <div className={register.input} style={{marginBottom:"20px"}}>
+            <div className={register.input} style={{ marginBottom: "20px" }}>
               <input
                 type="email"
                 name="email"
@@ -64,7 +61,10 @@ const Register = () => {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               />
             </div>
-            <div className={register.input} style={{marginBottom:"20px", display: "flex"}}>
+            <div
+              className={register.input}
+              style={{ marginBottom: "20px", display: "flex" }}
+            >
               <input
                 type={isShown ? "text" : "password"}
                 name="password"
@@ -73,7 +73,10 @@ const Register = () => {
                 onChange={handleChange}
                 required
               />
-              <span style={{position:"absolute", marginLeft:"19rem"}} onClick={togglePassword}>
+              <span
+                style={{ position: "absolute", marginLeft: "19rem" }}
+                onClick={togglePassword}
+              >
                 {isShown ? (
                   <FontAwesomeIcon icon={faEye} />
                 ) : (
@@ -81,12 +84,10 @@ const Register = () => {
                 )}
               </span>
             </div>
-           
+
             <Button type="submit" name="Sign-up!" color="#4EE0BC" />
           </div>
-          
         </form>
-        
       </div>
     </div>
   );
