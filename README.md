@@ -1,28 +1,3 @@
-Banking application designed by **Samuel Adeboye**
-
-Frontend hosted link: https://vee-bank-app.netlify.app/
-
-Backend hosted link : https://banking-app-kl58.onrender.com
-
-I created a banking application that offers users a seamless sign-up process with their full name, mobile number, email address, and phone number. The application generates an account number from the user's phone number for easy access, and a default transaction PIN is generated and sent with the response message notification. Users can log in using their account number, email, and password to make transactions such as deposits and withdrawals, and view their transaction history. Additionally, users can update their transaction PIN to something more memorable and secure. The backend was built using NestJS with GraphQL, and I used MongoDB as the database, which includes two collections and a foreign key of the user ID in the transaction collection. To create an intuitive user interface, I used React for the frontend.
-
-**Sample login details**
-
-email: adeboye@yahoo.com
-password: 123456
-account number: 8134488512
-**Transaction PIN: 1111**
-
-email: samuel@yahoo.com
-password: 123456
-account number: 8134488511
-**Transaction PIN: 1111**
-
-email: irene@yahoo.com
-password: 123456
-account number: 8134488510
-**Transaction PIN: 1111**
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
